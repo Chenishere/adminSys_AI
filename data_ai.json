@@ -1,0 +1,32 @@
+{
+  "questions": [
+    {
+      "questions": "Hello",
+      "answer": ""
+    },
+    {
+      "questions": "Create the user ralph",
+      "answer": ""
+    },
+    {
+      "questions": "/usr/local/bin/python3 \"/Users/ynce/Desktop/AdminSys AI/script.py\"",
+      "answer": "?"
+    },
+    {
+      "questions": "hello there",
+      "answer": "Hi, i'm here for help you !"
+    },
+    {
+      "questions": "Create for me a user named RH and give him right to : write read and execute",
+      "answer": "Create the user RH"
+    },
+    {
+      "questions": "sudo userad",
+      "answer": "exit"
+    },
+    {
+      "questions": "create for me a user",
+      "answer": "sudo useradd \"name of ur user\", then sudo passwd \"name of ur user to set a passwd\""
+    }
+  ]
+}
