@@ -25,8 +25,8 @@
       "answer": "exit"
     },
     {
-      "questions": "create for me a user",
-      "answer": "sudo useradd \"name of ur user\", then sudo passwd \"name of ur user to set a passwd\""
+      "questions": "creer pour moi un user",
+      "answer": "sudo useradd \"name of ur user\""
     },
     {
       "questions": "Bonjour bot",
@@ -57,7 +57,7 @@
       "answer": "net group <groupname>"
     },
     {
-      "questions": "Affiche les groupes stocké localement",
+      "questions": "Affiche les groupes stock\u00e9 localement",
       "answer": "net localgroup"
     },
     {
@@ -69,23 +69,23 @@
       "answer": "sc query"
     },
     {
-      "questions": "Afficher les détails d'un service spécifique.",
+      "questions": "Afficher les d\u00e9tails d'un service sp\u00e9cifique.",
       "answer": "sc query <service_name>"
     },
     {
-      "questions": "Démarrer un service.",
+      "questions": "D\u00e9marrer un service.",
       "answer": "sc start <service_name>"
     },
     {
-      "questions": "Arrêter un service.",
+      "questions": "Arr\u00eater un service.",
       "answer": "sc stop <service_name>"
     },
     {
-      "questions": "Afficher tous les processus en cours d'exécution.",
+      "questions": "Afficher tous les processus en cours d'ex\u00e9cution.",
       "answer": "tasklist"
     },
     {
-      "questions": "Afficher les services hébergés par chaque processus.",
+      "questions": "Afficher les services h\u00e9berg\u00e9s par chaque processus.",
       "answer": "tasklist /svc"
     },
     {
@@ -105,7 +105,7 @@
       "answer": "diskpart /list disk"
     },
     {
-      "questions": "Sélectionner un disque pour effectuer des opérations.",
+      "questions": "S\u00e9lectionner un disque pour effectuer des op\u00e9rations.",
       "answer": "diskpart /select disk <disk_number>"
     },
     {
@@ -117,51 +117,51 @@
       "answer": "ipconfig"
     },
     {
-      "questions": "Envoyer une requête ICMP à un hôte.",
+      "questions": "Envoyer une requ\u00eate ICMP \u00e0 un h\u00f4te.",
       "answer": "ping <hostname>"
     },
     {
-      "questions": "Afficher le chemin pris par les paquets vers un hôte.",
+      "questions": "Afficher le chemin pris par les paquets vers un h\u00f4te.",
       "answer": "tracert <hostname>"
     },
     {
-      "questions": "Afficher les connexions réseau en cours.",
+      "questions": "Afficher les connexions r\u00e9seau en cours.",
       "answer": "netstat"
     },
     {
-      "questions": "Effectuer une recherche DNS pour un nom d'hôte.",
+      "questions": "Effectuer une recherche DNS pour un nom d'h\u00f4te.",
       "answer": "nslookup <hostname>"
     },
     {
-      "questions": "Afficher les informations système.",
+      "questions": "Afficher les informations syst\u00e8me.",
       "answer": "systeminfo"
     },
     {
-      "questions": "Mettre à jour les stratégies de groupe.",
+      "questions": "Mettre \u00e0 jour les strat\u00e9gies de groupe.",
       "answer": "gpupdate"
     },
     {
-      "questions": "Afficher les résultats des stratégies de groupe pour l'utilisateur et l'ordinateur.",
+      "questions": "Afficher les r\u00e9sultats des strat\u00e9gies de groupe pour l'utilisateur et l'ordinateur.",
       "answer": "gpresult"
     },
     {
-      "questions": "Vérifier et réparer les fichiers système endommagés.",
+      "questions": "V\u00e9rifier et r\u00e9parer les fichiers syst\u00e8me endommag\u00e9s.",
       "answer": "sfc /scannow"
     },
     {
-      "questions": "Afficher ou modifier les attributs de fichiers ou de répertoires.",
+      "questions": "Afficher ou modifier les attributs de fichiers ou de r\u00e9pertoires.",
       "answer": "attrib"
     },
     {
-      "questions": "Copier des fichiers et des répertoires de manière étendue, avec prise en charge de diverses options.",
+      "questions": "Copier des fichiers et des r\u00e9pertoires de mani\u00e8re \u00e9tendue, avec prise en charge de diverses options.",
       "answer": "xcopy"
     },
     {
-      "questions": "Outil avancé de copie de fichiers et de répertoires avec des fonctionnalités de résilience et de journalisation.",
+      "questions": "Outil avanc\u00e9 de copie de fichiers et de r\u00e9pertoires avec des fonctionnalit\u00e9s de r\u00e9silience et de journalisation.",
       "answer": "robocopy"
     },
     {
-      "questions": "Déplacer des fichiers ou des répertoires.",
+      "questions": "D\u00e9placer des fichiers ou des r\u00e9pertoires.",
       "answer": "move"
     },
     {
@@ -169,43 +169,43 @@
       "answer": "del"
     },
     {
-      "questions": "Supprimer des répertoires.",
+      "questions": "Supprimer des r\u00e9pertoires.",
       "answer": "rmdir"
     },
     {
-      "questions": "Modifier les listes de contrôle d'accès (ACL) des fichiers et des répertoires.",
+      "questions": "Modifier les listes de contr\u00f4le d'acc\u00e8s (ACL) des fichiers et des r\u00e9pertoires.",
       "answer": "icacls"
     },
     {
-      "questions": "Prendre possession d'un fichier ou d'un répertoire.",
+      "questions": "Prendre possession d'un fichier ou d'un r\u00e9pertoire.",
       "answer": "takeown"
     },
     {
-      "questions": "Afficher ou modifier les listes de contrôle d'accès (ACL) des fichiers et des répertoires.",
+      "questions": "Afficher ou modifier les listes de contr\u00f4le d'acc\u00e8s (ACL) des fichiers et des r\u00e9pertoires.",
       "answer": "cacls"
     },
     {
-      "questions": "Vérifier et réparer l'intégrité des disques.",
+      "questions": "V\u00e9rifier et r\u00e9parer l'int\u00e9grit\u00e9 des disques.",
       "answer": "chkdsk"
     },
     {
-      "questions": "Vérifier et réparer les fichiers système.",
+      "questions": "V\u00e9rifier et r\u00e9parer les fichiers syst\u00e8me.",
       "answer": "sfc"
     },
     {
-      "questions": "Gérer la configuration de démarrage du système.",
+      "questions": "G\u00e9rer la configuration de d\u00e9marrage du syst\u00e8me.",
       "answer": "bcdedit"
     },
     {
-      "questions": "Ouvrir l'Observateur d'événements pour afficher les journaux d'événements système.",
+      "questions": "Ouvrir l'Observateur d'\u00e9v\u00e9nements pour afficher les journaux d'\u00e9v\u00e9nements syst\u00e8me.",
       "answer": "eventvwr"
     },
     {
-      "questions": "Ouvrir le Moniteur de ressources pour surveiller les performances système.",
+      "questions": "Ouvrir le Moniteur de ressources pour surveiller les performances syst\u00e8me.",
       "answer": "perfmon"
     },
     {
-      "questions": "Ouvrir la console Services pour gérer les services.",
+      "questions": "Ouvrir la console Services pour g\u00e9rer les services.",
       "answer": "services.msc"
     },
     {
@@ -213,23 +213,23 @@
       "answer": "sc config"
     },
     {
-      "questions": "Supprimer un service du système.",
+      "questions": "Supprimer un service du syst\u00e8me.",
       "answer": "sc delete"
     },
     {
-      "questions": "Afficher, créer, modifier ou supprimer des tâches planifiées.",
+      "questions": "Afficher, cr\u00e9er, modifier ou supprimer des t\u00e2ches planifi\u00e9es.",
       "answer": "schtasks"
     },
     {
-      "questions": "Afficher ou configurer les partages réseau sur le système.",
+      "questions": "Afficher ou configurer les partages r\u00e9seau sur le syst\u00e8me.",
       "answer": "net share"
     },
     {
-      "questions": "Se connecter à des partages réseau et les gérer.",
+      "questions": "Se connecter \u00e0 des partages r\u00e9seau et les g\u00e9rer.",
       "answer": "net use"
     },
     {
-      "questions": "Déconnecter une session utilisateur.",
+      "questions": "D\u00e9connecter une session utilisateur.",
       "answer": "logoff"
     },
     {
@@ -237,16 +237,20 @@
       "answer": "quser"
     },
     {
-      "questions": "Configurer la politique d'audit sur le système.",
+      "questions": "Configurer la politique d'audit sur le syst\u00e8me.",
       "answer": "auditpol"
     },
     {
-      "questions": "Ouvrir le Gestionnaire des tâches pour surveiller les performances et gérer les processus.",
+      "questions": "Ouvrir le Gestionnaire des t\u00e2ches pour surveiller les performances et g\u00e9rer les processus.",
       "answer": "taskmgr"
     },
     {
-      "questions": "Ouvrir le Moniteur de ressources pour surveiller l'utilisation des ressources système.",
+      "questions": "Ouvrir le Moniteur de ressources pour surveiller l'utilisation des ressources syst\u00e8me.",
       "answer": "perfmon"
+    },
+    {
+      "questions": "merci !",
+      "answer": "Pas de soucis, je suis la pour \u00e7a !"
     }
   ]
 }
