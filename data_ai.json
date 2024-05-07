@@ -27,6 +27,226 @@
     {
       "questions": "create for me a user",
       "answer": "sudo useradd \"name of ur user\", then sudo passwd \"name of ur user to set a passwd\""
+    },
+    {
+      "questions": "Bonjour bot",
+      "answer": "Bonjour humain comment puis je vous aider "
+    },
+    {
+      "questions": "remove this user",
+      "answer": "net user 'username' /delete"
+    },
+    {
+      "questions": "Salut",
+      "answer": "Bonjour !"
+    },
+    {
+      "questions": "Affiche les informations d'un user",
+      "answer": "net user \"username du user\""
+    },
+    {
+      "questions": "Affiche les groupes existant",
+      "answer": "net group "
+    },
+    {
+      "questions": "Donne moi les information sur les users d'un groupe",
+      "answer": "net group <groupname>"
+    },
+    {
+      "questions": "Affiche tous les membres d'un groupe",
+      "answer": "net group <groupname>"
+    },
+    {
+      "questions": "Affiche les groupes stocké localement",
+      "answer": "net localgroup"
+    },
+    {
+      "questions": "Afficher les membres du groupe Administrateurs.",
+      "answer": "net localgroup administrators"
+    },
+    {
+      "questions": "Afficher tous les services.",
+      "answer": "sc query"
+    },
+    {
+      "questions": "Afficher les détails d'un service spécifique.",
+      "answer": "sc query <service_name>"
+    },
+    {
+      "questions": "Démarrer un service.",
+      "answer": "sc start <service_name>"
+    },
+    {
+      "questions": "Arrêter un service.",
+      "answer": "sc stop <service_name>"
+    },
+    {
+      "questions": "Afficher tous les processus en cours d'exécution.",
+      "answer": "tasklist"
+    },
+    {
+      "questions": "Afficher les services hébergés par chaque processus.",
+      "answer": "tasklist /svc"
+    },
+    {
+      "questions": "Terminer un processus en utilisant son nom d'image.",
+      "answer": "taskkill /IM <process_name>"
+    },
+    {
+      "questions": "Terminer un processus en utilisant son ID de processus.",
+      "answer": "taskkill /PID <process_id>"
+    },
+    {
+      "questions": "Ouvrir l'outil DiskPart pour la gestion des disques.",
+      "answer": "diskpart"
+    },
+    {
+      "questions": "Afficher la liste des disques disponibles.",
+      "answer": "diskpart /list disk"
+    },
+    {
+      "questions": "Sélectionner un disque pour effectuer des opérations.",
+      "answer": "diskpart /select disk <disk_number>"
+    },
+    {
+      "questions": "Afficher la liste des volumes disponibles.",
+      "answer": "diskpart /list volume"
+    },
+    {
+      "questions": "Afficher la configuration IP.",
+      "answer": "ipconfig"
+    },
+    {
+      "questions": "Envoyer une requête ICMP à un hôte.",
+      "answer": "ping <hostname>"
+    },
+    {
+      "questions": "Afficher le chemin pris par les paquets vers un hôte.",
+      "answer": "tracert <hostname>"
+    },
+    {
+      "questions": "Afficher les connexions réseau en cours.",
+      "answer": "netstat"
+    },
+    {
+      "questions": "Effectuer une recherche DNS pour un nom d'hôte.",
+      "answer": "nslookup <hostname>"
+    },
+    {
+      "questions": "Afficher les informations système.",
+      "answer": "systeminfo"
+    },
+    {
+      "questions": "Mettre à jour les stratégies de groupe.",
+      "answer": "gpupdate"
+    },
+    {
+      "questions": "Afficher les résultats des stratégies de groupe pour l'utilisateur et l'ordinateur.",
+      "answer": "gpresult"
+    },
+    {
+      "questions": "Vérifier et réparer les fichiers système endommagés.",
+      "answer": "sfc /scannow"
+    },
+    {
+      "questions": "Afficher ou modifier les attributs de fichiers ou de répertoires.",
+      "answer": "attrib"
+    },
+    {
+      "questions": "Copier des fichiers et des répertoires de manière étendue, avec prise en charge de diverses options.",
+      "answer": "xcopy"
+    },
+    {
+      "questions": "Outil avancé de copie de fichiers et de répertoires avec des fonctionnalités de résilience et de journalisation.",
+      "answer": "robocopy"
+    },
+    {
+      "questions": "Déplacer des fichiers ou des répertoires.",
+      "answer": "move"
+    },
+    {
+      "questions": "Supprimer des fichiers.",
+      "answer": "del"
+    },
+    {
+      "questions": "Supprimer des répertoires.",
+      "answer": "rmdir"
+    },
+    {
+      "questions": "Modifier les listes de contrôle d'accès (ACL) des fichiers et des répertoires.",
+      "answer": "icacls"
+    },
+    {
+      "questions": "Prendre possession d'un fichier ou d'un répertoire.",
+      "answer": "takeown"
+    },
+    {
+      "questions": "Afficher ou modifier les listes de contrôle d'accès (ACL) des fichiers et des répertoires.",
+      "answer": "cacls"
+    },
+    {
+      "questions": "Vérifier et réparer l'intégrité des disques.",
+      "answer": "chkdsk"
+    },
+    {
+      "questions": "Vérifier et réparer les fichiers système.",
+      "answer": "sfc"
+    },
+    {
+      "questions": "Gérer la configuration de démarrage du système.",
+      "answer": "bcdedit"
+    },
+    {
+      "questions": "Ouvrir l'Observateur d'événements pour afficher les journaux d'événements système.",
+      "answer": "eventvwr"
+    },
+    {
+      "questions": "Ouvrir le Moniteur de ressources pour surveiller les performances système.",
+      "answer": "perfmon"
+    },
+    {
+      "questions": "Ouvrir la console Services pour gérer les services.",
+      "answer": "services.msc"
+    },
+    {
+      "questions": "Modifier la configuration des services.",
+      "answer": "sc config"
+    },
+    {
+      "questions": "Supprimer un service du système.",
+      "answer": "sc delete"
+    },
+    {
+      "questions": "Afficher, créer, modifier ou supprimer des tâches planifiées.",
+      "answer": "schtasks"
+    },
+    {
+      "questions": "Afficher ou configurer les partages réseau sur le système.",
+      "answer": "net share"
+    },
+    {
+      "questions": "Se connecter à des partages réseau et les gérer.",
+      "answer": "net use"
+    },
+    {
+      "questions": "Déconnecter une session utilisateur.",
+      "answer": "logoff"
+    },
+    {
+      "questions": "Afficher les informations sur les sessions utilisateur.",
+      "answer": "quser"
+    },
+    {
+      "questions": "Configurer la politique d'audit sur le système.",
+      "answer": "auditpol"
+    },
+    {
+      "questions": "Ouvrir le Gestionnaire des tâches pour surveiller les performances et gérer les processus.",
+      "answer": "taskmgr"
+    },
+    {
+      "questions": "Ouvrir le Moniteur de ressources pour surveiller l'utilisation des ressources système.",
+      "answer": "perfmon"
     }
   ]
 }
