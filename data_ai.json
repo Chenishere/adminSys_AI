@@ -149,10 +149,6 @@
       "answer": "del"
     },
     {
-      "questions": "Supprimer des r\u00e9pertoires.",
-      "answer": "rmdir"
-    },
-    {
       "questions": "Modifier les listes de contr\u00f4le d'acc\u00e8s (ACL) des fichiers et des r\u00e9pertoires.",
       "answer": "icacls"
     },

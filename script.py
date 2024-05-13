@@ -1,6 +1,7 @@
 import json
 from difflib import get_close_matches
 import subprocess
+import sys
 
 def load_data_ai(file_path: str) -> dict:
     with open(file_path, 'r') as file:
@@ -70,7 +71,9 @@ def chat_bot():
     data_ai = load_data_ai('data_ai.json')
 
     while True:
-        user_input = input('Vous: ').strip()  # Strip leading and trailing whitespace
+        sys.stdout.write('Vous: ')
+        sys.stdout.flush()
+        user_input = sys.stdin.readline().strip()
 
         if user_input.lower() == 'quit':
             break
@@ -82,7 +85,9 @@ def chat_bot():
         # Check if the user wants to create a user
         if "creer un user" in user_input.lower():
             # Ask for the username
-            name = input("Entrez le nom de l'utilisateur à créer: ")
+            sys.stdout.write("Entrez le nom de l'utilisateur à créer: ")
+            sys.stdout.flush()
+            name = sys.stdin.readline().strip()
             create_user(name)
             print(f"L'utilisateur '{name}' a bien été créé.")
             continue
