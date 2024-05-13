@@ -67,6 +67,15 @@ def remove_package(package_name: str, data_ai: dict):
     data_ai['questions'].append({"questions": f"supprime le paquet {package_name}", "answer": f"sudo apt remove {package_name}"})
     save_data_ai('data_ai.json', data_ai)
 
+def add_user_to_group():
+    # Demander le nom de l'utilisateur et le nom du groupe
+    user_name = input("Nom de l'utilisateur : ")
+    group_name = input("Nom du groupe : ")
+    
+    # Ajouter l'utilisateur au groupe
+    subprocess.run(f'sudo usermod -aG {group_name} {user_name}', shell=True)
+    print(f"L'utilisateur '{user_name}' a été ajouté au groupe '{group_name}'.")
+
 def chat_bot():
     data_ai = load_data_ai('data_ai.json')
 
