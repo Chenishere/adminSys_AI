@@ -237,7 +237,7 @@
       "answer": "sudo arp-scan --localnet"
     },
     {
-      "questions": "liste les groupes",
+      "questions": "fait une liste des groupes",
       "answer": "cat /etc/group | cut -d: -f1"
     }
   ]
