@@ -32,6 +32,14 @@ def create_user(name: str):
     print(f"Please set a password for the user '{name}'")
     subprocess.run(f'sudo passwd {name}', shell=True)
 
+def delete_user(name: str, data_ai: dict):
+    # Supprimer l'utilisateur
+    subprocess.run(f'sudo userdel -r {name}', shell=True)
+    print(f"L'utilisateur '{name}' a bien été supprimé.")
+    # Ajouter la réponse dans le fichier JSON
+    data_ai['questions'].append({"questions": f"supprime l'utilisateur {name}", "answer": f"L'utilisateur '{name}' a bien été supprimé."})
+    save_data_ai('data_ai.json', data_ai)
+
 def chat_bot():
     data_ai: dict = load_data_ai('data_ai.json')
 
@@ -51,6 +59,13 @@ def chat_bot():
             name = input("Entrez le nom de l'utilisateur à créer: ")
             create_user(name)
             print(f"L'utilisateur '{name}' a bien été créé.")
+            continue
+
+        # Check if the user wants to delete a user
+        if "supprime un user" in user_input.lower():
+            # Ask for the username to delete
+            name = input("Quel utilisateur voulez-vous supprimer ? ")
+            delete_user(name, data_ai)
             continue
     
         best_match: str | None = find_best_match(user_input, [q["questions"] for q in data_ai["questions"]])

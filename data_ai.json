@@ -1,18 +1,6 @@
 {
   "questions": [
     {
-      "questions": "Hello",
-      "answer": ""
-    },
-    {
-      "questions": "Create the user ralph",
-      "answer": ""
-    },
-    {
-      "questions": "/usr/local/bin/python3 \"/Users/ynce/Desktop/AdminSys AI/script.py\"",
-      "answer": "?"
-    },
-    {
       "questions": "hello there",
       "answer": "Hi, i'm here for help you !"
     },
@@ -31,10 +19,6 @@
     {
       "questions": "Bonjour bot",
       "answer": "Bonjour humain comment puis je vous aider "
-    },
-    {
-      "questions": "remove this user",
-      "answer": "net user 'username' /delete"
     },
     {
       "questions": "Salut",
@@ -251,6 +235,10 @@
     {
       "questions": "merci !",
       "answer": "Pas de soucis, je suis la pour \u00e7a !"
+    },
+    {
+      "questions": "Lister tous les utilisateurs",
+      "answer": "cat /etc/passwd | cut -d: -f1"
     }
   ]
 }
