@@ -40,28 +40,39 @@ def delete_user(name: str, data_ai: dict):
     data_ai['questions'].append({"questions": f"supprime l'utilisateur {name}", "answer": f"L'utilisateur '{name}' a bien été supprimé."})
     save_data_ai('data_ai.json', data_ai)
 
-def add_user_to_group(user: str, group: str, data_ai: dict):
-    # Ajouter l'utilisateur au groupe
-    subprocess.run(f'sudo usermod -aG {group} {user}', shell=True)
-    print(f"L'utilisateur '{user}' a bien été ajouté au groupe '{group}'.")
+def create_group(group_name: str):
+    # Créer le groupe
+    subprocess.run(f'sudo groupadd {group_name}', shell=True)
+    print(f"Le groupe '{group_name}' a bien été créé.")
+
+def add_user_to_group():
+    # Ajouter un utilisateur à un groupe
+    user_name = input("Quel utilisateur voulez-vous ajouter au groupe ? ")
+    group_name = input("À quel groupe voulez-vous l'ajouter ? ")
+    subprocess.run(f'sudo usermod -aG {group_name} {user_name}', shell=True)
+    print(f"L'utilisateur '{user_name}' a bien été ajouté au groupe '{group_name}'.")
+
+def remove_user_from_group():
+    # Retirer un utilisateur d'un groupe
+    user_name = input("Quel utilisateur voulez-vous supprimer du groupe ? ")
+    group_name = input("De quel groupe voulez-vous le supprimer ? ")
+    subprocess.run(f'sudo deluser {user_name} {group_name}', shell=True)
+    print(f"L'utilisateur '{user_name}' a bien été supprimé du groupe '{group_name}'.")
+
+def install_package(package_name: str, data_ai: dict):
+    # Installer le paquet
+    subprocess.run(f'sudo apt install {package_name}', shell=True)
+    print(f"Le paquet '{package_name}' a bien été téléchargé et installé.")
     # Ajouter la réponse dans le fichier JSON
-    data_ai['questions'].append({"questions": f"ajoute l'utilisateur {user} au groupe {group}", "answer": f"sudo usermod -aG {group} {user}"})
+    data_ai['questions'].append({"questions": f"telecharge le paquet {package_name}", "answer": f"sudo apt install {package_name}"})
     save_data_ai('data_ai.json', data_ai)
 
-def remove_user_from_group(user: str, group: str, data_ai: dict):
-    # Retirer l'utilisateur du groupe
-    subprocess.run(f'sudo deluser {user} {group}', shell=True)
-    print(f"L'utilisateur '{user}' a bien été supprimé du groupe '{group}'.")
+def remove_package(package_name: str, data_ai: dict):
+    # Supprimer le paquet
+    subprocess.run(f'sudo apt remove {package_name}', shell=True)
+    print(f"Le paquet '{package_name}' a bien été supprimé.")
     # Ajouter la réponse dans le fichier JSON
-    data_ai['questions'].append({"questions": f"supprime l'utilisateur {user} du groupe {group}", "answer": f"sudo deluser {user} {group}"})
-    save_data_ai('data_ai.json', data_ai)
-
-def create_group_with_permissions(permissions: str, data_ai: dict):
-    # Créer le groupe avec les permissions spécifiées
-    subprocess.run(f'sudo addgroup {permissions}', shell=True)
-    print(f"Le groupe avec les permissions '{permissions}' a bien été créé.")
-    # Ajouter la réponse dans le fichier JSON
-    data_ai['questions'].append({"questions": f"crée un groupe avec certaines permissions", "answer": f"sudo addgroup {permissions}"})
+    data_ai['questions'].append({"questions": f"supprime le paquet {package_name}", "answer": f"sudo apt remove {package_name}"})
     save_data_ai('data_ai.json', data_ai)
 
 def chat_bot():
@@ -92,27 +103,35 @@ def chat_bot():
             delete_user(name, data_ai)
             continue
 
+        # Check if the user wants to create a group
+        if "creer un groupe" in user_input.lower():
+            # Ask for the group name
+            group_name = input("Nom du groupe que voulez-vous créer ? ")
+            create_group(group_name)
+            continue
+
         # Check if the user wants to add a user to a group
         if "ajoute un user au groupe" in user_input.lower():
-            # Ask for the user and group names
-            user = input("Quel utilisateur voulez-vous ajouter au groupe ? ")
-            group = input("Dans quel groupe voulez-vous l'ajouter ? ")
-            add_user_to_group(user, group, data_ai)
+            add_user_to_group()
             continue
 
         # Check if the user wants to remove a user from a group
         if "supprime un user de son groupe" in user_input.lower():
-            # Ask for the user and group names
-            user = input("Quel utilisateur voulez-vous supprimer de son groupe ? ")
-            group = input("De quel groupe voulez-vous le supprimer ? ")
-            remove_user_from_group(user, group, data_ai)
+            remove_user_from_group()
             continue
 
-        # Check if the user wants to create a group with certain permissions
-        if "crée un groupe avec certaines permissions" in user_input.lower():
-            # Ask for the permissions
-            permissions = input("Quelles permissions voulez-vous attribuer à ce groupe ? ")
-            create_group_with_permissions(permissions, data_ai)
+        # Check if the user wants to install a package
+        if "telecharge un paquet" in user_input.lower():
+            # Ask for the package name
+            package_name = input("Quel paquet voulez-vous télécharger ? ")
+            install_package(package_name, data_ai)
+            continue
+
+        # Check if the user wants to remove a package
+        if "supprime un paquet" in user_input.lower():
+            # Ask for the package name to remove
+            package_name = input("Quel paquet voulez-vous supprimer ? ")
+            remove_package(package_name, data_ai)
             continue
 
         best_match = find_best_match(user_input, [q["questions"] for q in data_ai["questions"]])
