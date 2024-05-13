@@ -29,10 +29,6 @@
       "answer": "net user \"username du user\""
     },
     {
-      "questions": "Affiche les groupes existant",
-      "answer": "net group "
-    },
-    {
       "questions": "Donne moi les information sur les users d'un groupe",
       "answer": "net group <groupname>"
     },
@@ -237,12 +233,16 @@
       "answer": "Pas de soucis, je suis la pour \u00e7a !"
     },
     {
-      "questions": "Lister tous les utilisateurs",
+      "questions": "Liste tous les users",
       "answer": "cat /etc/passwd | cut -d: -f1"
     },
     {
       "questions": "execute le scan arp",
       "answer": "sudo arp-scan --localnet"
+    },
+    {
+      "questions": "liste les groupes",
+      "answer": "cat /etc/group | cut -d: -f1"
     }
   ]
 }

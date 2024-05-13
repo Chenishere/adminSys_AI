@@ -40,12 +40,28 @@ def delete_user(name: str, data_ai: dict):
     data_ai['questions'].append({"questions": f"supprime l'utilisateur {name}", "answer": f"L'utilisateur '{name}' a bien été supprimé."})
     save_data_ai('data_ai.json', data_ai)
 
-def install_package(package_name: str, data_ai: dict):
-    # Installer le paquet
-    subprocess.run(f'sudo apt install {package_name}', shell=True)
-    print(f"Le paquet '{package_name}' a bien été téléchargé et installé.")
+def add_user_to_group(user: str, group: str, data_ai: dict):
+    # Ajouter l'utilisateur au groupe
+    subprocess.run(f'sudo usermod -aG {group} {user}', shell=True)
+    print(f"L'utilisateur '{user}' a bien été ajouté au groupe '{group}'.")
     # Ajouter la réponse dans le fichier JSON
-    data_ai['questions'].append({"questions": f"telecharge le paquet {package_name}", "answer": f"sudo apt install {package_name}"})
+    data_ai['questions'].append({"questions": f"ajoute l'utilisateur {user} au groupe {group}", "answer": f"sudo usermod -aG {group} {user}"})
+    save_data_ai('data_ai.json', data_ai)
+
+def remove_user_from_group(user: str, group: str, data_ai: dict):
+    # Retirer l'utilisateur du groupe
+    subprocess.run(f'sudo deluser {user} {group}', shell=True)
+    print(f"L'utilisateur '{user}' a bien été supprimé du groupe '{group}'.")
+    # Ajouter la réponse dans le fichier JSON
+    data_ai['questions'].append({"questions": f"supprime l'utilisateur {user} du groupe {group}", "answer": f"sudo deluser {user} {group}"})
+    save_data_ai('data_ai.json', data_ai)
+
+def create_group_with_permissions(permissions: str, data_ai: dict):
+    # Créer le groupe avec les permissions spécifiées
+    subprocess.run(f'sudo addgroup {permissions}', shell=True)
+    print(f"Le groupe avec les permissions '{permissions}' a bien été créé.")
+    # Ajouter la réponse dans le fichier JSON
+    data_ai['questions'].append({"questions": f"crée un groupe avec certaines permissions", "answer": f"sudo addgroup {permissions}"})
     save_data_ai('data_ai.json', data_ai)
 
 def chat_bot():
@@ -76,11 +92,27 @@ def chat_bot():
             delete_user(name, data_ai)
             continue
 
-        # Check if the user wants to install a package
-        if "telecharge un paquet" in user_input.lower():
-            # Ask for the package name
-            package_name = input("Quel paquet voulez-vous télécharger ? ")
-            install_package(package_name, data_ai)
+        # Check if the user wants to add a user to a group
+        if "ajoute un user au groupe" in user_input.lower():
+            # Ask for the user and group names
+            user = input("Quel utilisateur voulez-vous ajouter au groupe ? ")
+            group = input("Dans quel groupe voulez-vous l'ajouter ? ")
+            add_user_to_group(user, group, data_ai)
+            continue
+
+        # Check if the user wants to remove a user from a group
+        if "supprime un user de son groupe" in user_input.lower():
+            # Ask for the user and group names
+            user = input("Quel utilisateur voulez-vous supprimer de son groupe ? ")
+            group = input("De quel groupe voulez-vous le supprimer ? ")
+            remove_user_from_group(user, group, data_ai)
+            continue
+
+        # Check if the user wants to create a group with certain permissions
+        if "crée un groupe avec certaines permissions" in user_input.lower():
+            # Ask for the permissions
+            permissions = input("Quelles permissions voulez-vous attribuer à ce groupe ? ")
+            create_group_with_permissions(permissions, data_ai)
             continue
 
         best_match = find_best_match(user_input, [q["questions"] for q in data_ai["questions"]])
@@ -93,7 +125,7 @@ def chat_bot():
         else:
             print(f'Bot: Je ne connais pas la réponse. Pouvez-vous m\'enseigner ?')
             new_answer = input('Tapez la réponse ou "skip" pour ignorer : ')
-
+            
             if new_answer.lower() != 'skip':
                 data_ai['questions'].append({"questions": user_input, "answer": new_answer})
                 save_data_ai('data_ai.json', data_ai)
