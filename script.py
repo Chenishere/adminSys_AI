@@ -45,19 +45,10 @@ def create_group(group_name: str):
     subprocess.run(f'sudo groupadd {group_name}', shell=True)
     print(f"Le groupe '{group_name}' a bien été créé.")
 
-def add_user_to_group():
-    # Ajouter un utilisateur à un groupe
-    user_name = input("Quel utilisateur voulez-vous ajouter au groupe ? ")
-    group_name = input("À quel groupe voulez-vous l'ajouter ? ")
-    subprocess.run(f'sudo usermod -aG {group_name} {user_name}', shell=True)
-    print(f"L'utilisateur '{user_name}' a bien été ajouté au groupe '{group_name}'.")
-
-def remove_user_from_group():
-    # Retirer un utilisateur d'un groupe
-    user_name = input("Quel utilisateur voulez-vous supprimer du groupe ? ")
-    group_name = input("De quel groupe voulez-vous le supprimer ? ")
-    subprocess.run(f'sudo deluser {user_name} {group_name}', shell=True)
-    print(f"L'utilisateur '{user_name}' a bien été supprimé du groupe '{group_name}'.")
+def delete_group(group_name: str):
+    # Supprimer le groupe
+    subprocess.run(f'sudo groupdel {group_name}', shell=True)
+    print(f"Le groupe '{group_name}' a bien été supprimé.")
 
 def install_package(package_name: str, data_ai: dict):
     # Installer le paquet
@@ -108,6 +99,13 @@ def chat_bot():
             # Ask for the group name
             group_name = input("Nom du groupe que voulez-vous créer ? ")
             create_group(group_name)
+            continue
+
+        # Check if the user wants to delete a group
+        if "supprime ce groupe" in user_input.lower():
+            # Ask for the group name to delete
+            group_name = input("Quel groupe voulez-vous supprimer ? ")
+            delete_group(group_name)
             continue
 
         # Check if the user wants to add a user to a group
