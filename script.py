@@ -76,6 +76,21 @@ def add_user_to_group():
     subprocess.run(f'sudo usermod -aG {group_name} {user_name}', shell=True)
     print(f"L'utilisateur '{user_name}' a été ajouté au groupe '{group_name}'.")
 
+def get_groups_for_user():
+    # Demander le nom de l'utilisateur
+    user_name = input("Nom de l'utilisateur : ")
+    
+    # Obtenir les groupes auxquels appartient l'utilisateur
+    result = subprocess.run(f'id -Gn {user_name}', shell=True, capture_output=True, text=True)
+    groups = result.stdout.strip().split()
+
+    if groups:
+        print(f"L'utilisateur '{user_name}' appartient aux groupes suivants :")
+        for group in groups:
+            print(group)
+    else:
+        print(f"L'utilisateur '{user_name}' n'appartient à aucun groupe.")
+
 def chat_bot():
     data_ai = load_data_ai('data_ai.json')
 
@@ -130,6 +145,11 @@ def chat_bot():
         # Check if the user wants to remove a user from a group
         if "supprime un user de son groupe" in user_input.lower():
             remove_user_from_group()
+            continue
+
+        # Check if the user wants to get groups for a user
+        if "a quel groupe appartient ce user" in user_input.lower():
+            get_groups_for_user()
             continue
 
         # Check if the user wants to install a package
