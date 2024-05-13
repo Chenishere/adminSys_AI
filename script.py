@@ -40,6 +40,14 @@ def delete_user(name: str, data_ai: dict):
     data_ai['questions'].append({"questions": f"supprime l'utilisateur {name}", "answer": f"L'utilisateur '{name}' a bien été supprimé."})
     save_data_ai('data_ai.json', data_ai)
 
+def install_package(package_name: str, data_ai: dict):
+    # Installer le paquet
+    subprocess.run(f'sudo apt install {package_name}', shell=True)
+    print(f"Le paquet '{package_name}' a bien été téléchargé et installé.")
+    # Ajouter la réponse dans le fichier JSON
+    data_ai['questions'].append({"questions": f"telecharge le paquet {package_name}", "answer": f"sudo apt install {package_name}"})
+    save_data_ai('data_ai.json', data_ai)
+
 def chat_bot():
     data_ai: dict = load_data_ai('data_ai.json')
 
@@ -66,6 +74,13 @@ def chat_bot():
             # Ask for the username to delete
             name = input("Quel utilisateur voulez-vous supprimer ? ")
             delete_user(name, data_ai)
+            continue
+
+        # Check if the user wants to install a package
+        if "telecharge un paquet" in user_input.lower():
+            # Ask for the package name
+            package_name = input("Quel paquet voulez-vous télécharger ? ")
+            install_package(package_name, data_ai)
             continue
     
         best_match: str | None = find_best_match(user_input, [q["questions"] for q in data_ai["questions"]])

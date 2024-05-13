@@ -239,6 +239,10 @@
     {
       "questions": "Lister tous les utilisateurs",
       "answer": "cat /etc/passwd | cut -d: -f1"
+    },
+    {
+      "questions": "execute le scan arp",
+      "answer": "sudo python3 arpscan.py"
     }
   ]
 }
