@@ -4,18 +4,18 @@ import subprocess
 
 def load_data_ai(file_path: str) -> dict:
     with open(file_path, 'r') as file:
-        data: dict = json.load(file)
+        data = json.load(file)
         return data
 
 def save_data_ai(file_path: str, data: dict):
     with open(file_path, 'w') as file:
-        json.dump(data, file, indent=2) 
+        json.dump(data, file, indent=2)
 
-def find_best_match(user_question: str, questions: list[str]) -> str | None:
-    matches: list = get_close_matches(user_question, questions, n=1, cutoff=0.6)
+def find_best_match(user_question: str, questions: list) -> str or None:
+    matches = get_close_matches(user_question, questions, n=1, cutoff=0.6)
     return matches[0] if matches else None
 
-def get_answer_for_question(question: str, data_ai: dict) -> str | None: 
+def get_answer_for_question(question: str, data_ai: dict) -> str or None:
     for q in data_ai["questions"]:
         if q["questions"] == question:
             return q["answer"]
@@ -49,11 +49,11 @@ def install_package(package_name: str, data_ai: dict):
     save_data_ai('data_ai.json', data_ai)
 
 def chat_bot():
-    data_ai: dict = load_data_ai('data_ai.json')
+    data_ai = load_data_ai('data_ai.json')
 
     while True:
-        user_input: str = input('Vous: ').strip()  # Strip leading and trailing whitespace
-        
+        user_input = input('Vous: ').strip()  # Strip leading and trailing whitespace
+
         if user_input.lower() == 'quit':
             break
 
@@ -82,17 +82,17 @@ def chat_bot():
             package_name = input("Quel paquet voulez-vous télécharger ? ")
             install_package(package_name, data_ai)
             continue
-    
-        best_match: str | None = find_best_match(user_input, [q["questions"] for q in data_ai["questions"]])
+
+        best_match = find_best_match(user_input, [q["questions"] for q in data_ai["questions"]])
 
         if best_match:
-            answer: str = get_answer_for_question(best_match, data_ai)
+            answer = get_answer_for_question(best_match, data_ai)
             print(f'Bot: {answer}')
             if answer:
                 execute_command(answer)
         else:
             print(f'Bot: Je ne connais pas la réponse. Pouvez-vous m\'enseigner ?')
-            new_answer: str = input('Tapez la réponse ou "skip" pour ignorer : ')
+            new_answer = input('Tapez la réponse ou "skip" pour ignorer : ')
 
             if new_answer.lower() != 'skip':
                 data_ai['questions'].append({"questions": user_input, "answer": new_answer})

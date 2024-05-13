@@ -242,7 +242,7 @@
     },
     {
       "questions": "execute le scan arp",
-      "answer": "sudo python3 arpscan.py"
+      "answer": "sudo arp-scan --localnet"
     }
   ]
 }
